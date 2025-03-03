@@ -27,3 +27,38 @@ Example:
 '''
 
 # TODO: Write code
+
+import json
+import os
+from packaging import parse_packaging, calc_total_units, get_unit
+
+
+input_file = os.path.join("data", "packaging.txt")
+output_file = os.path.join("data", "packaging.json")
+
+packages = []
+
+try:
+    
+    with open(input_file, "r") as file:
+        for line in file:
+            package_desc = line.strip()
+
+            if not package_desc:
+                continue
+
+            parsed_package = parse_packaging(package_desc)
+            total_units = calc_total_units(parsed_package)
+            unit = get_unit(parsed_package)
+
+            print(f"{package_desc} => total units: {total_units} {unit}")
+
+            packages.append(parsed_package)
+
+    with open(output_file, "w") as json_file:
+        json.dump(packages, json_file, indent=4)
+
+except FileNotFoundError:
+    print(f"Error: {input_file} not found.")
+except Exception as e:
+    print(f"An error occurred: {e}")

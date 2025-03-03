@@ -20,6 +20,22 @@ def parse_packaging(packaging_data: str) -> list[dict]:
     '''
     pass # TODO: Replace this line and write code
 
+    package = []
+    
+    for data in packaging_data.split(' / '):  
+        parts = data.split(" in ")
+        
+        
+        quantity, item = parts[0].split(maxsplit=1)
+        package.append({item.strip(): int(quantity)})
+        
+       
+        if len(parts) > 1:
+            quantity, item = parts[1].split(maxsplit=1)
+            package.append({item.strip(): int(quantity)})
+
+    return package  
+
 
 def calc_total_units(package: list[dict]) -> int:
     '''
@@ -35,6 +51,14 @@ def calc_total_units(package: list[dict]) -> int:
     '''
     pass # TODO: Replace this line and write code
 
+    if not package:
+        return 0  
+    
+    total = 1
+    for item in package:
+        total *= next(iter(item.values()))  
+
+    return total
 
 def get_unit(package: list[dict]) -> str:
     '''
@@ -50,6 +74,11 @@ def get_unit(package: list[dict]) -> str:
 
     '''
     pass # TODO: Replace this line and write code
+
+    if not package:
+        return ""  #return an empty string if the list is empty
+    
+    return next(iter(package[0].keys()))
 
 # This will only run from here, not when imported
 # # Use this for testing / debugging cases with the debugger

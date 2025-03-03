@@ -1,7 +1,7 @@
 # Reflection
 
-Student Name:  name
-Sudent Email:  email
+Student Name:  Mera Singh
+Sudent Email:  mesingh@syr.edu
 
 ## Instructions
 
@@ -23,3 +23,4 @@ Examples:
 
 `--- Reflection Below This Line ---`
 
+This assignment helped me understand how to parse structured text data, handle string manipulations, and work with JSON serialization. I struggled with singular vs. plural forms (e.g., "pack" vs. "packs"), which caused test failures. Debugging errors like "invalid literal for int()" taught me the importance of validating input structure before converting strings. Running tests also highlighted unexpected output differences, reinforcing the need for careful comparison. Moving forward, I want to improve text normalization and write better test cases to catch edge cases early.
